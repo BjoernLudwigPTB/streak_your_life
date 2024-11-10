@@ -11,15 +11,17 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  # Service locator
+  # Simple direct Service Locator that allows to decouple the interface from a concrete implementation.
   get_it: ^8.0.2
-  # Bloc for state management
+  # Flutter Widgets that make it easy to implement the BLoC (Business Logic Component) design pattern.
   flutter_bloc: ^8.1.6
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  # A mock framework inspired by Mockito with APIs for Fakes, Mocks, behavior verification, and stubbing.
   mockito: ^5.4.4
+  # Recommended lints for Flutter apps, packages, and plugins to encourage good coding practices.
   flutter_lints: ^5.0.0
 
 flutter:
