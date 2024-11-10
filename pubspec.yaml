@@ -19,6 +19,12 @@ dependencies:
   dartz: ^0.10.1
   # A Dart package that helps to implement value based equality without needing to explicitly override == and hashCode.
   equatable: ^2.0.5
+  # Extremely fast, easy to use, and fully async NoSQL database for Flutter.
+  isar: ^3.1.0+1
+  # Isar Core binaries for the Isar Database.
+  isar_flutter_libs: ^3.1.0+1
+  # Flutter plugin for getting commonly used locations on host platform file systems.
+  path_provider: ^2.1.5
 
 dev_dependencies:
   flutter_test:
