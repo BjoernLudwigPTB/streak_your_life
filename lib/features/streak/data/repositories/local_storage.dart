@@ -21,7 +21,7 @@ abstract class LocalStorageRepository<T> {
   Future<Either<Failure, T>> read(int id);
 
   /// Writes a new object to the Isar collection.
-  Future<void> write(T object);
+  Future<Either<Failure, int>> write(T object);
 
   /// Updates an object in the Isar collection.
   Future<void> update(int id, T updatedObject);
