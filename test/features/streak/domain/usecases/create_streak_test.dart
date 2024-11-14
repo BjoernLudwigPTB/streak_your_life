@@ -31,7 +31,6 @@ void main() {
 
   final testStreak = Streak(name: 'testStreak', recurrence: RecurrenceType.daily);
   final randomInteger = Random().nextInt(1000);
-  ;
 
   test('should store a given streak to the local storage', () async {
     // arrange
