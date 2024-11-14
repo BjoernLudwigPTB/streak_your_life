@@ -9,8 +9,7 @@ class CreateStreak {
 
   CreateStreak(this.localStorageRepository);
 
-  Future<Either<Failure, int>> execute({required Streak streak}) async {
-
+  Future<Either<Failure, int>> call({required Streak streak}) async {
     return await localStorageRepository.write(streak);
   }
 }
