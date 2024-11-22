@@ -38,7 +38,7 @@ void main() {
         .thenAnswer((_) async => Right(randomInteger));
 
     // act
-    final result = await createStreak(streak: testStreak);
+    final result = await createStreak(Params(streak: testStreak));
     // assert
     expect(result, Right(randomInteger));
     verify(mockLocalStorageRepository.write(testStreak)).called(1);
