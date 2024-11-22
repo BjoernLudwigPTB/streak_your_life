@@ -1,5 +1,5 @@
-package com.example.first_flutter_experience
+package com.example.streak_your_life
 
 import io.flutter.embedding.android.FlutterActivity
 
-class MainActivity: FlutterActivity()
+class MainActivity : FlutterActivity()

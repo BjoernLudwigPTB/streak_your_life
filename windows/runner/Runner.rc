@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "first_flutter_experience" "\0"
+            VALUE "FileDescription", "streak_your_life" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "first_flutter_experience" "\0"
+            VALUE "InternalName", "streak_your_life" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2024 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "first_flutter_experience.exe" "\0"
-            VALUE "ProductName", "first_flutter_experience" "\0"
+            VALUE "OriginalFilename", "streak_your_life.exe" "\0"
+            VALUE "ProductName", "streak_your_life" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
