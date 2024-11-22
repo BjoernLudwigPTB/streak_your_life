@@ -1,16 +1,11 @@
-# first_flutter_experience
+# Streak_your_life (Syl)
 
-A new Flutter project.
+Streak_your_life supports you with keeping track of and reinforcing recurring
+activities. Syl is under active development and will be available on all major
+platforms as soon as possible.
 
-## Getting Started
+## License
 
-This project is a starting point for a Flutter plication.
+Copyright 2024 Björn Ludwig
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Licensed under the GNU AGPLv3: https://www.gnu.org/licenses/agpl-3.0.html
