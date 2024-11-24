@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:isar/isar.dart';
-import 'package:streak_your_life/core/error/failure.dart';
+
+import '../../../../core/error/failure.dart';
 
 /// Abstract class for managing data storage using Isar.
 ///
