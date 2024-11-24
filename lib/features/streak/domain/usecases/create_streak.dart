@@ -1,23 +1,22 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
-import 'package:streak_your_life/core/usecases/usecase.dart';
 
 import '../../../../core/error/failure.dart' show Failure;
+import '../../../../core/usecases/usecase.dart';
 import '../../data/repositories/local_storage.dart';
 import '../entities/streak.dart';
 
 /// A use case for creating a new streak and storing it in the local storage.
 ///
-/// This class is part of the Clean Architecture pattern and defines
-/// the use case for persisting a `Streak` entity into a repository.
+/// This class defines the use case for persisting a `Streak` entity into a repository.
 ///
 /// Implements [UseCase] to ensure it follows the contract for all use cases.
 class CreateStreak implements UseCase<int, Params> {
   /// The repository responsible for managing local storage.
-  final LocalStorageRepository localStorageRepository;
+  final LocalStorageRepository repository;
 
   /// Creates a [CreateStreak] use case with the given [LocalStorageRepository].
-  CreateStreak(this.localStorageRepository);
+  CreateStreak(this.repository);
 
   /// Executes the use case by writing the provided streak to local storage.
   ///
@@ -35,7 +34,7 @@ class CreateStreak implements UseCase<int, Params> {
   /// ```
   @override
   Future<Either<Failure, int>> call(Params params) async {
-    return await localStorageRepository.write(params.streak);
+    return await repository.write(params.streak);
   }
 }
 
