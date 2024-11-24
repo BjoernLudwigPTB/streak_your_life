@@ -1,47 +1,48 @@
-import 'dart:math';
-
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:streak_your_life/core/error/failure.dart';
-import 'package:streak_your_life/features/streak/data/repositories/local_storage.dart';
-import 'package:streak_your_life/features/streak/domain/entities/streak.dart';
-import 'package:streak_your_life/features/streak/domain/usecases/create_streak.dart';
+import 'package:streak_your_life/core/error/failure.dart' show Failure;
+import 'package:streak_your_life/core/usecases/usecase.dart' show NoParams;
+import 'package:streak_your_life/features/streak/data/repositories/local_storage.dart'
+    show LocalStorageRepository;
+import 'package:streak_your_life/features/streak/domain/entities/streak.dart'
+    show RecurrenceType, Streak;
+import 'package:streak_your_life/features/streak/domain/usecases/show_streaks.dart'
+    show ShowStreaks;
+
+final testResult = Right<Failure, List<Streak>>(
+    [Streak(name: 'testStreak', recurrence: RecurrenceType.daily)]);
 
 class MockLocalStorageRepository extends Mock
     implements LocalStorageRepository<Streak> {
   @override
-  Future<List<Streak>> readAll() {
+  Future<Either<Failure, List<Streak>>> readAll() {
     return super.noSuchMethod(
-      Invocation.method(#write, [streak]),
-      returnValue: Future.value(Right<Failure, int>(1)),
-      returnValueForMissingStub: Future.value(Right<Failure, int>(1)),
+      Invocation.method(#readAll, []),
+      returnValue: Future.value(testResult),
+      returnValueForMissingStub: Future.value(testResult),
     );
   }
 }
 
 void main() {
-  late CreateStreak createStreak;
+  late ShowStreaks showStreaks;
   late MockLocalStorageRepository mockLocalStorageRepository;
 
   setUp(() {
     mockLocalStorageRepository = MockLocalStorageRepository();
-    createStreak = CreateStreak(mockLocalStorageRepository);
+    showStreaks = ShowStreaks(mockLocalStorageRepository);
   });
 
-  final testStreak = Streak(name: 'testStreak', recurrence: RecurrenceType.daily);
-  final randomInteger = Random().nextInt(1000);
-
-  test('should store a given streak to the local storage', () async {
+  test('should show streaks in the local storage repository', () async {
     // arrange
-    when(mockLocalStorageRepository.write(testStreak))
-        .thenAnswer((_) async => Right(randomInteger));
+    when(mockLocalStorageRepository.readAll()).thenAnswer((_) async => testResult);
 
     // act
-    final result = await createStreak(Params(streak: testStreak));
+    final result = await showStreaks(NoParams());
     // assert
-    expect(result, Right(randomInteger));
-    verify(mockLocalStorageRepository.write(testStreak)).called(1);
+    expect(result, testResult);
+    verify(mockLocalStorageRepository.readAll()).called(1);
     verifyNoMoreInteractions(mockLocalStorageRepository);
   });
 }

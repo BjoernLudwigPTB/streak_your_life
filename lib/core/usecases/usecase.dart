@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:streak_your_life/core/error/failure.dart';
+import 'package:equatable/equatable.dart';
 
 import '../error/failure.dart';
 
@@ -20,4 +20,18 @@ abstract class UseCase<Type, Params> {
   /// Returns a [Future] containing an [Either] with a [Failure] in case
   /// of an error or a value of type [Type] upon success.
   Future<Either<Failure, Type>> call(Params params);
+}
+
+/// A placeholder class representing the absence of parameters for a use case.
+///
+/// This class is used when a use case does not require any input parameters.
+///
+/// Example usage:
+/// ```dart
+/// final result = await someUseCase(NoParams());
+/// ```
+class NoParams extends Equatable {
+  /// Returns an empty list, as there are no properties to compare.
+  @override
+  List<Object?> get props => [];
 }
