@@ -5,8 +5,7 @@ import '../../../../core/error/failure.dart';
 
 /// Abstract class for managing data storage using Isar.
 ///
-/// This class defines common CRUD operations to be implemented
-/// by subclasses.
+/// This class defines common CRUD operations to be implemented by subclasses.
 abstract class LocalStorageRepository<T> {
   /// The Isar collection for the data type T.
   late final IsarCollection<T> collection;
