@@ -23,7 +23,7 @@ class Streak {
   ///
   /// Can be `null` if the streak has not yet occurred.
   final DateTime? lastOccurrence;
- 
+
   /// Create a new recurring streak.
   ///
   /// [name]: The name of the streak.
