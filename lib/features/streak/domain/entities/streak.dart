@@ -1,3 +1,5 @@
+import 'package:equatable/equatable.dart' show Equatable;
+
 /// Enum representing the recurrence type of a streak.
 ///
 /// Each enum value maps to a string representation used in JSON.
@@ -33,7 +35,7 @@ enum RecurrenceType {
 ///
 /// This class holds the type of recurrence, the streak's name,
 /// and optionally the date and time of the last occurrence.
-class Streak {
+class Streak extends Equatable {
   /// The name of the streak.
   final String name;
 
@@ -52,13 +54,13 @@ class Streak {
   /// [name]: The name of the streak.
   /// [recurrence]: The type of recurrence.
   /// [lastOccurrence]: (Optional) The date and time of the last occurrence.
-  Streak({
+  const Streak({
     required this.name,
     required this.recurrence,
     this.lastOccurrence,
   });
 
-  /// Return a string representation of the event.
+  /// Return a string representation of the streak.
   ///
   /// Useful for debugging purposes.
   @override
@@ -66,28 +68,7 @@ class Streak {
     return 'Streak(name: $name, recurrence: $recurrence, lastOccurrence: $lastOccurrence)';
   }
 
-  /// Convert the streak into a Map object for storage (e.g., in JSON).
-  ///
-  /// Fields `name`, `recurrence`, and `lastOccurrence` are serialized.
-  /// The enum value of [recurrence] is stored as its index.
-  Map<String, dynamic> toMap() {
-    return {
-      'name': name,
-      'recurrence': recurrence.index,
-      'lastOccurrence': lastOccurrence?.toIso8601String(),
-    };
-  }
-
-  /// Create a [Streak] from a Map object.
-  ///
-  /// [map]: A Map object containing the keys `name`, `recurrence`, and `lastOccurrence`.
-  /// Throws an error if required fields are missing or invalid.
-  factory Streak.fromMap(Map<String, dynamic> map) {
-    return Streak(
-      name: map['name'],
-      recurrence: RecurrenceType.values[map['recurrence']],
-      lastOccurrence:
-          map['lastOccurrence'] != null ? DateTime.parse(map['lastOccurrence']) : null,
-    );
-  }
+  /// List of properties used for equality comparison.
+  @override
+  List<Object?> get props => [name, recurrence, lastOccurrence];
 }
